@@ -1,0 +1,19 @@
+%A Hello world app that computes the sum of the numbers between 0 to 20
+START
+3 LOAD 20
+4 STORE 200
+LOAD 0
+STORE 201
+7 STORE 202
+CMPM 200
+CJMP 15
+LOADM 202
+ADDM 201
+STORE 202
+LOADM 201
+ADD 1
+15 STORE 201
+JMP 6
+LOADM 202
+DISP
+HALT
