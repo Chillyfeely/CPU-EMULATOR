@@ -135,7 +135,7 @@ public class Emulator {
         int i = 0;
         while ((line = reader.readLine()) != null) {
             if (line.startsWith("%")) {
-                System.out.println(line.substring(1).trim()); // print the content of the line
+                line.substring(1).trim(); // print the content of the line
             } else {
                 String[] parts = line.split(" ", 2); // split the line into two parts
                 if (isNumeric(parts[0])) {
@@ -170,6 +170,9 @@ public class Emulator {
             if ("HALT".equals(instruction))
                 break;
             emulator.execute(instruction);
+            if (emulator.AC < 0 || emulator.AC >= 256) {
+                throw new RuntimeException("Error: OUR CPU CANNOT HANDLE THAT MUCH!!!!");
+            }
             emulator.PC++;
         }
     }
